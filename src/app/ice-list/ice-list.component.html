@@ -4,27 +4,24 @@
         <th>Sabor</th>
         <th>Tipo</th>
         <th>Precio</th>
-        <th>Cant</th>
+        <th>Stock</th>
     </thead>
-    <tbody>
-        <tr>
-            <th><img [src]= "ice.Imagen" [alt]= "ice.Sabor" ></th>
-            <td>{{ice.Sabor}}</td>
-            <td>{{ice.Tipo}}</td>
-            <td>{{ice.Precio}}</td>
-            <td>{{ice.Cant}}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+    <tbody><!--como se vio en web 2 se utiliza la logica de vista para mostrar dinamicamente los datos-->
+        @for (ice of ice; track $index) {<!--directivas en angular(de estructura if/for de atributos ngStyle)-->
+            <tr>
+                <td><img [src]= "ice.imagen" [alt]= "ice.sabor" ></td>
+                <td>{{ice.sabor}}</td>
+                <td>{{ice.tipo}}</td>
+                <td>{{ice.precio|currency}}</td><!--pipes(se pueden concatenar)-->
+                @if (ice.stock>0){
+                    <td>{{ice.stock}}</td>
+                }@else{
+                    <td>SIN STOCK</td>
+                }
+            </tr>
+        }
+        @empty {
+            <td>no hay lista de helados para mostrar</td>
+        }
     </tbody>
 </table>
