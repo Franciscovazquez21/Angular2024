@@ -4,4 +4,6 @@ export interface Ice{
     tipo : string;
     precio : number;
     stock : number;
+    cantidad : number;
 }
+

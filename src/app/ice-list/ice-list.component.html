@@ -5,9 +5,10 @@
         <th>Tipo</th>
         <th>Precio</th>
         <th>Stock</th>
+        <th>Cantidad</th>
     </thead>
     <tbody><!--como se vio en web 2 se utiliza la logica de vista para mostrar dinamicamente los datos-->
-        @for (ice of ice; track $index) {<!--directivas en angular(de estructura if/for de atributos ngStyle)-->
+        @for (ice of ices; track $index) {<!--directivas en angular(de estructura if/for de atributos ngStyle)-->
             <tr>
                 <td><img [src]= "ice.imagen" [alt]= "ice.sabor" ></td>
                 <td>{{ice.sabor}}</td>
@@ -18,6 +19,12 @@
                 }@else{
                     <td>SIN STOCK</td>
                 }
+                <td><!--el binding cuando es desde html a ts () , cuando es al reves se utiliza [] o interpolacion-->
+                    <button (click)="decrementarCantidad(ice)">-</button><!--two-data binding [()]conectado ida y vuelta-->
+                        <input type="text" [(ngModel)]="ice.cantidad"
+                        (keyup)="alCambiarCantidad($event,ice)"><!--bug fixing (se controlan los parametros validos)-->
+                    <button (click)="agregarCantidad(ice)">+</button>
+                </td>
             </tr>
         }
         @empty {
