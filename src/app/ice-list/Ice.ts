@@ -1,9 +1,9 @@
 export interface Ice{
-    imagen : string;
-    sabor : string;
-    tipo : string;
-    precio : number;
+    image : string;
+    taste : string;
+    type : string;
+    price : number;
     stock : number;
-    cantidad : number;
+    quantity : number;
 }
 

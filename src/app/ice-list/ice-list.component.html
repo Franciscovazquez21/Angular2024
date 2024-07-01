@@ -10,21 +10,19 @@
     <tbody><!--como se vio en web 2 se utiliza la logica de vista para mostrar dinamicamente los datos-->
         @for (ice of ices; track $index) {<!--directivas en angular(de estructura if/for de atributos ngStyle)-->
             <tr>
-                <td><img [src]= "ice.imagen" [alt]= "ice.sabor" ></td>
-                <td>{{ice.sabor}}</td>
-                <td>{{ice.tipo}}</td>
-                <td>{{ice.precio|currency}}</td><!--pipes(se pueden concatenar)-->
+                <td><img [src]= "ice.image" [alt]= "ice.taste" ></td>
+                <td>{{ice.taste}}</td>
+                <td>{{ice.type}}</td>
+                <td>{{ice.price|currency}}</td><!--pipes(se pueden concatenar)-->
                 @if (ice.stock>0){
                     <td>{{ice.stock}}</td>
+                    <app-input-integer [(quantity)]="ice.quantity" [max]="ice.stock" (maxReached)="maxReached($event)">
+                    </app-input-integer>
+                    <button class="btn" (click)="addToCart(ice)">comprar</button>
                 }@else{
                     <td>SIN STOCK</td>
                 }
-                <td><!--el binding cuando es desde html a ts () , cuando es al reves se utiliza [] o interpolacion-->
-                    <button (click)="decrementarCantidad(ice)">-</button><!--two-data binding [()]conectado ida y vuelta-->
-                        <input type="text" [(ngModel)]="ice.cantidad"
-                        (keyup)="alCambiarCantidad($event,ice)"><!--bug fixing (se controlan los parametros validos)-->
-                    <button (click)="agregarCantidad(ice)">+</button>
-                </td>
+                
             </tr>
         }
         @empty {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IceCartService } from '../ice-cart.service';
 import { Ice } from './Ice'; //necesario importar la clase para que conozca los atributos/metodos.
 
 @Component({
@@ -10,46 +11,42 @@ export class IceListComponent {
 
   ices : Ice[] = [
     {//representa mock (objeto que simula datos para simular la vista)
-      imagen:"/assets/img/chocolate.jpg", 
-      sabor:"Chocolate",
-      tipo:"Crema",
-      precio: 500,
+      image:"/assets/img/chocolate.jpg", 
+      taste:"Chocolate",
+      type:"Crema",
+      price: 500,
       stock:10,
-      cantidad: 0,
+      quantity: 0,
     },
     {
-      imagen:"/assets/img/chocolate.jpg", 
-      sabor:"Frutilla",
-      tipo:"Crema",
-      precio: 400,
+      image:"/assets/img/chocolate.jpg", 
+      taste:"Frutilla",
+      type:"Crema",
+      price: 400,
       stock:6,
-      cantidad: 0,
+      quantity: 0,
     },
     {
-      imagen:"/assets/img/chocolate.jpg", 
-      sabor:"Vainilla",
-      tipo:"Crema",
-      precio: 350,
+      image:"/assets/img/chocolate.jpg", 
+      taste:"Vainilla",
+      type:"Crema",
+      price: 350,
       stock:5,
-      cantidad: 0,
+      quantity: 0,
     }
   ]
 
-  constructor(){
+  constructor(private cart : IceCartService){}
+
+
+  addToCart(ice: Ice):void{
+    this.cart.addToCart(ice);
+    ice.stock-=ice.quantity;
+    ice.quantity=0;
   }
 
-  decrementarCantidad(ice: Ice):void {
-    if(ice.cantidad>0)//control de rango
-      ice.cantidad--;  
+  maxReached(s:String){
+    alert(s);
   }
-  
-  agregarCantidad(ice: Ice):void {
-    if(ice.stock>ice.cantidad)//control de stock permitido para pedir
-      ice.cantidad++;
-  }
-  
-  alCambiarCantidad($event: Event ,ice: Ice):void {
-    console.log($event);
-    }
     
 }

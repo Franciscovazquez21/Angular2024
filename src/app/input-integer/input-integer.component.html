@@ -1,0 +1,5 @@
+<td><!--el binding cuando es desde html a ts () , cuando es al reves se utiliza [] o interpolacion-->
+    <button (click)="decrementarCantidad()">-</button><!--two-data binding [()]conectado ida y vuelta-->
+        <input type="text" [(ngModel)]="quantity" (keyup)="alCambiarCantidad($event)"><!--bug fixing (se controlan los parametros validos)-->
+    <button (click)="incrementarCantidad()">+</button>
+</td>

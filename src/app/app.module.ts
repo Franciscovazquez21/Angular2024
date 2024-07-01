@@ -8,14 +8,16 @@ import { IceListComponent } from './ice-list/ice-list.component';
 import { FormsModule } from '@angular/forms';
 import { IceAboutComponent } from './ice-about/ice-about.component';
 import { IcesComponent } from './ices/ices.component';
-import { IceCarritoComponent } from './ice-carrito/ice-carrito.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
+import { CartComponent } from './cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
     IceListComponent,
     IceAboutComponent,
     IcesComponent,
-    IceCarritoComponent,
+    InputIntegerComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
