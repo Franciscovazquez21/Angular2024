@@ -16,6 +16,9 @@ export class InputIntegerComponent implements OnInit {
   @Input()
   max! : number;
 
+  @Input()
+  stock!: number;
+
   @Output()
   quantityChange : EventEmitter<number> = new EventEmitter<number>();
 
@@ -24,6 +27,7 @@ export class InputIntegerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   decrementarCantidad():void {
     if(this.quantity>0){//control de rango
       this.quantity--;
@@ -40,8 +44,24 @@ export class InputIntegerComponent implements OnInit {
     }
   }
   
-  alCambiarCantidad($event: Event):void {
-    console.log($event);
+  onChangeQuantity($event: Event): void {
+    const inputElement = $event.target as HTMLInputElement;
+    const inputValue = Number(inputElement.value);
+
+    if(inputValue>this.max){
+      this.quantity=this.max;
+    }
     this.quantityChange.emit(this.quantity);
   }
+
+  validateInput(event: KeyboardEvent): void {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Tab'];
+    if (
+      !allowedKeys.includes(event.key) &&
+      !/^[0-9]$/.test(event.key)
+    ) {
+      event.preventDefault();
+    }
+  }
+
 }

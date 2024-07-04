@@ -1,23 +1,25 @@
-<table class="table">
-    <thead>
-        <th>Imagen</th>
-        <th>Sabor</th>
-        <th>Tipo</th>
-        <th>Precio</th>
-        <th>Stock</th>
-        <th>Cantidad</th>
-    </thead>
-    <tbody><!--como se vio en web 2 se utiliza la logica de vista para mostrar dinamicamente los datos-->
-        @for (ice of cartList$; track $index) {<!--directivas en angular(de estructura if/for de atributos ngStyle)-->
-            <tr>
-                <td><img [src]= "ice.image" [alt]= "ice.taste" ></td>
-                <td>{{ice.taste}}</td>
-                <td>{{ice.type}}</td>
-                <td>{{ice.quantity}}</td><!--pipes(se pueden concatenar)-->                
-            </tr>
-        }
-        @empty {
-            <td>el carrito se encuentra vacio</td>
-        }
-    </tbody>
-</table>
+@if(cartList$.length==0) {
+    <p>el carrito se encuentra vacio</p>
+}@else{
+    <table class="table">
+        <thead>
+            <th>Imagen</th>
+            <th>Sabor</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+        </thead>
+        <tbody><!--como se vio en web 2 se utiliza la logica de vista para mostrar dinamicamente los datos-->
+            @for (ice of cartList$; track $index) {<!--directivas en angular(de estructura if/for de atributos ngStyle)-->
+                <tr>
+                    <td><img [src]= "ice.image" [alt]= "ice.taste" ></td>
+                    <td>{{ice.taste}}</td>
+                    <td>{{ice.type}}</td>
+                    <td>{{ice.quantity}}</td><!--pipes(se pueden concatenar)-->                
+                </tr>
+                <button class="btn btn-outline-warning" (click)="removeToCart(ice)">Eliminar</button><!--ACA-->
+            }
+        </tbody>
+    </table>
+    <p>Total = {{total}}</p>
+}

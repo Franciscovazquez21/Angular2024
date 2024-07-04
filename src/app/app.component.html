@@ -1,15 +1,14 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="['/']">{{title}}</a>
+    <a class="navbar-brand" [routerLink]="['/']">{{title}} Cream</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" [routerLink]="['/']">Home</a>
-        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" [routerLink]="['/cart']">Carrito</a>
         <a class="nav-link" [routerLink]="['/about']">About</a><!--directiva de redireccion de links-->
-        <a class="nav-link disabled" aria-disabled="true">Info</a>
       </div>
     </div>
   </div>
@@ -17,5 +16,46 @@
 <div class="container">
   <router-outlet></router-outlet><!--indicamos donde queremos que angular muestre los componentes-->
 </div>
-<h1>{{title}}</h1>
-<footer>{{title}} 2024</footer>
+
+<footer class="bg-dark text-white text-center text-lg-start">
+  <div class="container p-4">
+      <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+              <h5 class="text-uppercase">{{title}} cream 2024</h5>
+              <p>
+                  Disfruta de los mejores helados artesanales en nuestra heladería. Calidad y sabor inigualables.
+              </p>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Enlaces</h5>
+              <ul class="list-unstyled mb-0">
+                  <li>
+                      <a href="#!" class="text-white">Inicio</a>
+                  </li>
+                  <li>
+                      <a [routerLink]="['/about']" class="text-white">Nosotros</a>
+                  </li>
+                  <li>
+                      <a href="#!" class="text-white">Contacto</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase mb-0">Síguenos</h5>
+              <ul class="list-unstyled">
+                  <li>
+                      <a href="#!" class="text-white">Facebook</a>
+                  </li>
+                  <li>
+                      <a href="#!" class="text-white">Instagram</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2024 Heladería 2024. Todos los derechos reservados.
+  </div>
+</footer>
+<!--<footer>{{title}} 2024</footer>-->

@@ -16,9 +16,11 @@
                 <td>{{ice.price|currency}}</td><!--pipes(se pueden concatenar)-->
                 @if (ice.stock>0){
                     <td>{{ice.stock}}</td>
-                    <app-input-integer [(quantity)]="ice.quantity" [max]="ice.stock" (maxReached)="maxReached($event)">
-                    </app-input-integer>
-                    <button class="btn" (click)="addToCart(ice)">comprar</button>
+                    <div>
+                        <app-input-integer [(quantity)]="ice.quantity" [max]="ice.stock" (maxReached)="maxReached($event)">
+                        </app-input-integer>
+                        <button class="btn btn-outline-info" (click)="addToCart(ice)">comprar</button>
+                    </div>
                 }@else{
                     <td>SIN STOCK</td>
                 }
