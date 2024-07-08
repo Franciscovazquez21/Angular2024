@@ -6,8 +6,8 @@
             <th>Imagen</th>
             <th>Sabor</th>
             <th>Tipo</th>
-            <th>Precio</th>
             <th>Cantidad</th>
+            <th>Subtotal</th>
         </thead>
         <tbody><!--como se vio en web 2 se utiliza la logica de vista para mostrar dinamicamente los datos-->
             @for (ice of cartList$; track $index) {<!--directivas en angular(de estructura if/for de atributos ngStyle)-->
@@ -16,10 +16,10 @@
                     <td>{{ice.taste}}</td>
                     <td>{{ice.type}}</td>
                     <td>{{ice.quantity}}</td><!--pipes(se pueden concatenar)-->                
+                    <td>{{ice.quantity*ice.price|currency}}</td>
                 </tr>
-                <button class="btn btn-outline-warning" (click)="removeToCart(ice)">Eliminar</button><!--ACA-->
+                <button class="btn btn-outline-warning" (click)="removeToCart(ice)">Eliminar</button>
             }
         </tbody>
     </table>
-    <p>Total = {{total}}</p>
 }

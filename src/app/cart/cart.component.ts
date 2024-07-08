@@ -9,7 +9,6 @@ import { IceCartService } from '../sevices/ice-cart.service';
 })
 export class CartComponent {
 
-
   cartList$ : Ice[] = [];
   total:number;
 
@@ -18,10 +17,9 @@ export class CartComponent {
     this.total=0;
   }
 
+  //elimina del carrito 
   removeToCart(ice: Ice) {
     this.cart.removeToCart(ice);
-  }
-  
-  
+  }   
 
 }

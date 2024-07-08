@@ -22,7 +22,6 @@ export class IceCartService {
     this.cartList.next(this._cartList);
   }
 
-
   removeToCart(ice: Ice) {  
     let item = this._cartList.findIndex((v)=>v.taste == ice.taste);
     if(item != -1){
