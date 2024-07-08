@@ -1,5 +1,15 @@
 <<<<<<< HEAD
-# Heladeria
+# Heladeria "Cream"
+
+## Integrante: Vazquez Francisco , DNI: 35418649, Email: franciscovazquez211@gmail.com, SEDE: Tandil.
+
+## Tematica:
+
+El proyecto realizado corresponde a una pagina web de helados, en la cual se puede ver el listado de los productos disponibles,
+donde se puede elegir la cantidad de helados a comprar y en un carrito poder observar el pedido generado hasta el momento.
+La implementación se realizo de una manera similar a lo visto en las clases virtuales, siguiendo las practicas que permiten mediante el framework Angular 
+generar los componentes que intervienen en la pagina, y mediante las directivas,la comunicación entre estos componentes y el ruteo, lograr un sitio dinamico.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
 
